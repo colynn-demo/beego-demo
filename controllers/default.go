@@ -19,9 +19,13 @@ func (c *MainController) Get() {
 
 	user := models.User{ID: int(v)}
 
-	_ = orm.Read(&user)
-	c.Data["Website"] = user.WebSite
-	c.Data["Email"] = user.Email
-	c.Data["Name"] = user.Name
+	err := orm.Read(&user)
+	if err != nil {
+		c.Data["Name"] = "404"
+	} else {
+		c.Data["Website"] = user.WebSite
+		c.Data["Email"] = user.Email
+		c.Data["Name"] = user.Name
+	}
 	c.TplName = "index.tpl"
 }
