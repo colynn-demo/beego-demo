@@ -11,8 +11,10 @@ import (
 type User struct {
 	ID      int `orm:"column(id);int(8);auto" json:"id"`
 	Name    string
+	User    string
 	WebSite string
 	Email   string
+	Address string
 }
 
 // DBinit ..
