@@ -9,12 +9,12 @@ import (
 
 // User ..
 type User struct {
-	ID      int `orm:"column(id);int(8);auto" json:"id"`
-	Name    string
-	User    string
-	WebSite string
-	Email   string
-	Address string
+	ID      int    `orm:"column(id);int(8);auto" json:"id"`
+	Name    string `json:"name"`
+	User    string `json:"user"`
+	WebSite string `json:"web_site"`
+	Email   string `json:"email"`
+	Address string `json:"address"`
 }
 
 // DBinit ..
