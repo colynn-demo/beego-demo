@@ -40,13 +40,21 @@ import { UserList,deleteUser } from '../api/backend';
     },
     methods: {
       handleDelete(id) {
-        deleteUser(id).then(
+        this.$confirm('你确认删除此用户吗?', '', {
+          confirmButtonText: 'OK',
+          cancelButtonText: 'Cancel',
+          type: 'warning'
+        }).then(() => {
+          deleteUser(id).then(
           response => {
             console.log(response)
+            this.$message({
+            type: 'success',
+            message: '删除成功'
+          }); 
             this.getList()
-          }
-        )
-
+          });
+        }).catch(() => {});
       },
       getList() {
         UserList().then(
